@@ -8,6 +8,7 @@ require('dotenv').config();
 require('./config/database');
 
 const app = express();
+const Note = require('./models/note')
 
 app.use(logger('dev'));
 // Process data in body of request if 
@@ -22,12 +23,26 @@ app.use(require('./config/checkToken'));
 
 // Put all API routes here (before the catch-all)
 app.use('/api/users', require('./routes/api/users'));
+// app.use('/api/notes', require('./routes/api/notes'));
+
 
 // "catch-all" route that will match all GET requests
 // that don't match an API route defined above
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
+
+
+// app.post('/notes',  (req,res) => {
+//   const title  = req.body.title;
+//   const body = req.body.body;
+//   const note =  Note.create({
+//     title: title,
+//     body: body,
+//   });
+//   res.json({note: note})
+// });
+
 
 const port = process.env.PORT || 3001;
 

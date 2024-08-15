@@ -10,43 +10,40 @@ deleteNote,
 
 
 const fetchNotes = async (req,res) => {
-    const notes= await Note.find()
-    console.log(notes)
-    res.json({notes: notes})
+    const notes= await Note.find({user: req.user._id})
+    res.json({notes})
   }
   
   const fetchNote = async (req,res) => {
-      const noteID = req.params.id;
+      const noteID = req.user._id;
       const note = await note.findById(noteID)
-      res.json({note: note})
+      res.json({note})
     }
   
   const createNote = async (req,res) => {
-      const body = req.body.body;
       const note = await Note.create({
-        body: body,
+        ...req.body,
+        user: req.user._id
       });
-      res.json({note: note})
+      res.json({note})
     }
   
   const updateNote = async (req, res) => {
-      const noteID = req.params.id;
-    
-      const body = req.body.body;
-    
-      const result = await Note.findByIdAndUpdate(noteID, {
-        body: body,
-      },{returnDocument:"after"})
-      console.log(result)
-      console.log(noteID)
-     
+      const note = await Note.findByIdAndUpdate({
+            _id: req.params.id,
+            user: req.user._id
+      },
+      req.body,
+      {new:true, runValidators: true})
       res.json({note: result})
     }
   
   const deleteNote = async (req,res) => {
-      const noteID = req.params.id
-      await Note.deleteOne({id: noteID})
+      const note = await Note.findOneAndDelete({
+        _id: req.params.id,
+        user:req.user._id
+      });
     
-      res.json({success: "Note Deleted"})
+      res.json({success: "Note Deleted"},{note})
     }
 
