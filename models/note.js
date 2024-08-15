@@ -10,4 +10,4 @@ const noteSchema = new Schema({
     body: String
 })
 
-module.eports = mongoose.model("Note", noteSchema)
+module.exports = mongoose.model("Note", noteSchema) 
