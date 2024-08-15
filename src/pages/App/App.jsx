@@ -7,7 +7,7 @@ import AuthPage from '../AuthPage/AuthPage';
 import NavBar from '../../components/NavBar/NavBar';
 import NewNoteForm from '../../components/NewNoteForm/NewNoteForm';
 import NewNotePage from '../NewNotePage/NewNotePage';
-import './App.css';
+// import './App.css';
 
 export default function App() {
   const [user, setUser] = useState(getUser());
