@@ -1,20 +1,20 @@
 const express = require('express');
-const notesController = require('../../controllers/api/notes');
 const router = express.Router();
-const ensureLoggedIn = require('../../config/ensureLoggedIn');
+const notesController = require('../../controllers/api/notes');
+// const ensureLoggedIn = require ('../../config/ensureLoggedIn');
 
 
 // Routing  for playlist
 
-router.get('/', ensureLoggedIn, notesController.fetchNotes )
+router.get('/', notesController.fetchNotes)
 
-router.post('/', ensureLoggedIn, notesController.createNote)
+router.post('/', notesController.createNote)
 
-router.get('/:id',ensureLoggedIn, notesController.fetchNote)
+router.get('/:id', notesController.fetchNote)
 
-router.put('/:id', ensureLoggedIn, notesController.updateNote)
+router.put('/:id', notesController.updateNote)
 
-router.delete('/:id', ensureLoggedIn, notesController.deleteNote)
+router.delete('/:id', notesController.deleteNote)
 
 
 

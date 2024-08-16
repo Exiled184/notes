@@ -18,23 +18,23 @@ app.use(express.static(path.join(__dirname, 'build')));
 app.use(require('./config/checkToken'));
 
 // Put all API routes here (before the catch-all)
-// app.use('/api/users', require('./routes/api/users'));
-
+app.use('/api/users', require('./routes/api/users'));
+app.use('/api/notes', require('./routes/api/notes'));
 
 app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
 
-app.post('/notes', async (req,res) => {
-  const title  = req.body.title;
-  const body = req.body.body;
-  const note =  await Note.create({
-    title: title,
-    body: body,
-  });
-  res.json({note: note})
-});
+// app.post('/notes', async (req,res) => {
+//   const title  = req.body.title;
+//   const body = req.body.body;
+//   const note =  await Note.create({
+//     title: title,
+//     body: body,
+//   });
+//   res.json({note: note})
+// });
 
 
 const port = process.env.PORT || 3001;

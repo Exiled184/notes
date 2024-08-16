@@ -1,14 +1,5 @@
 const Note = require('../../models/note')
 
-module.exports ={
-fetchNotes,
-fetchNote,
-createNote,
-updateNote,
-deleteNote,
-}
-
-
 const fetchNotes = async (req,res) => {
     const notes= await Note.find({user: req.user._id})
     res.json({notes})
@@ -47,3 +38,10 @@ const fetchNotes = async (req,res) => {
       res.json({success: "Note Deleted"},{note})
     }
 
+    module.exports ={
+      fetchNotes,
+      fetchNote,
+      createNote,
+      updateNote,
+      deleteNote,
+      }
