@@ -17,13 +17,14 @@ export default function NewNoteForm({ notes, setNotes }) {
         }
     }
 
-    const updateNote = async (updatedNote) => {
-        try {
-            const response = await noteAPI.updateNote(updatedNote._id, updatedNote)
-        } catch (error) {
-            console.log(error)
-        }
-    }
+    // const editNote = async () => {
+    //     try {
+    //         const response = await noteAPI.updateNote(updatedNote._id, updatedNote)
+    //         setNotes([newNote, ...notes])
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
 
 
 

@@ -1,8 +1,19 @@
 import { useEffect, useState } from "react";
 import * as noteAPI from "../../utilities/notes-api";
+// import EditNoteForm from "../EditNoteForm/EditNoteForm";
 
 export default function NoteItem({ notes }) {
 
+
+
+    // const editNote = async () => {
+    //     try {
+    //         const response = await noteAPI.updateNote(updatedNote._id, updatedNote)
+    //         setNotes([reponses, ...notes])
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
 
 
     return (
@@ -11,15 +22,20 @@ export default function NoteItem({ notes }) {
             {notes.length === 0 ? (
                 <p>No Notes Yet!</p>
             ) : (
-                <ul>
+                <div>
                     {notes.map(note => (
-                        <li key={note._id}>
+                        <div className="note"
+                            key={note._id}>
                             <p>{note.title}</p>
                             <p>{note.body}</p>
-                            {/* <p>{new Date(note.createdAt).toLocaleString()}</p> */}
-                        </li>
-                    ))}
-                </ul>
+                            {/* <EditNoteForm /> */}
+                            <button>Edit</button>
+                            <button>Delete</button>
+                        </div>
+
+                    ))
+                    }
+                </div>
             )}
         </div>
 

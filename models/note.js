@@ -6,8 +6,8 @@ const noteSchema = new Schema({
     {type: mongoose.Schema.Types.ObjectId, 
         require: true, 
         ref: "User"},
-    title: String,
-    body: String
+    title: {type: String, required: true},
+    content: {type: String, required: true}
 })
 
 module.exports = mongoose.model("Note", noteSchema) 
