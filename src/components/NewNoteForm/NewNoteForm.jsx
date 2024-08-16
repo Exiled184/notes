@@ -1,18 +1,33 @@
-import { useState } from "react"
+import { useState } from "react";
+import * as noteAPI from "../../utilities/notes-api";
 
-export default function NewNoteForm({ addNote }) {
+export default function NewNoteForm({ notes, setNotes }) {
     const [noteText, setNoteText] = useState({
         title: "",
         body: "",
     })
 
+
+    const addNote = async () => {
+        try {
+            const newNote = await noteAPI.createNote({ title: noteText })
+            setNotes([newNote, ...notes])
+        } catch (error) {
+            console.log(error)
+        }
+
+    }
+
     const handleSubmit = (e) => {
         e.preventDefault();
         if (noteText.trim()) {
+            console.log(noteText)
             addNote(noteText);
             setNoteText('')
         }
     }
+
+
 
     return (
         <form onSubmit={handleSubmit}>
