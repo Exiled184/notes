@@ -5,18 +5,23 @@ const fetchNotes = async (req,res) => {
     res.json({notes})
   }
   
-  const fetchNote = async (req,res) => {
-      const noteID = req.user._id;
-      const note = await note.findById(noteID)
-      res.json({note})
-    }
+  // const fetchNote = async (req,res) => {
+  //     const noteID = req.user._id;
+  //     const note = await note.findById(noteID)
+  //     res.json({note})
+  //   }
   
   const createNote = async (req,res) => {
+    try{
       const note = await Note.create({
         ...req.body,
         user: req.user._id
       });
-      res.json({note})
+      res.status(201).json(note)
+    } catch(error){
+      console.log(error)
+      res.status(400).json(error)
+    }
     }
   
   const updateNote = async (req, res) => {
@@ -40,7 +45,7 @@ const fetchNotes = async (req,res) => {
 
     module.exports ={
       fetchNotes,
-      fetchNote,
+      // fetchNote,
       createNote,
       updateNote,
       deleteNote,

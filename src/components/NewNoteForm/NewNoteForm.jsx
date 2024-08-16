@@ -1,7 +1,10 @@
 import { useState } from "react"
 
 export default function NewNoteForm({ addNote }) {
-    const [noteText, setNoteText] = useState("")
+    const [noteText, setNoteText] = useState({
+        title: "",
+        body: "",
+    })
 
     const handleSubmit = (e) => {
         e.preventDefault();

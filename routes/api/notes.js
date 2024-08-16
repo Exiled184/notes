@@ -10,7 +10,7 @@ router.get('/', notesController.fetchNotes)
 
 router.post('/', notesController.createNote)
 
-router.get('/:id', notesController.fetchNote)
+// router.get('/:id', notesController.fetchNote)
 
 router.put('/:id', notesController.updateNote)
 

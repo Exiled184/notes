@@ -2,11 +2,9 @@ import { useState } from 'react';
 import { Routes, Route } from 'react-router-dom';
 import { getUser } from '../../utilities/users-service';
 import AuthPage from '../AuthPage/AuthPage';
-// import NewOrderPage from '../NewOrderPage/NewOrderPage';
-// import OrderHistoryPage from '../OrderHistoryPage/OrderHistoryPage';
+
 import NavBar from '../../components/NavBar/NavBar';
 import NewNoteForm from '../../components/NewNoteForm/NewNoteForm';
-import NewNotePage from '../NewNotePage/NewNotePage';
 // import './App.css';
 
 export default function App() {
@@ -28,7 +26,7 @@ export default function App() {
         <>
           <NavBar user={user} setUser={setUser} />
           <Routes>
-            <Route path="/notes/new" element={<NewNotePage addNote={addNote} />} />
+            <Route path="/notes/new" element={<NewNoteForm addNote={addNote} />} />
           </Routes>
           <div>
             <h2>Your Notes</h2>

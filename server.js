@@ -25,18 +25,6 @@ app.get('/*', function(req, res) {
   res.sendFile(path.join(__dirname, 'build', 'index.html'));
 });
 
-
-// app.post('/notes', async (req,res) => {
-//   const title  = req.body.title;
-//   const body = req.body.body;
-//   const note =  await Note.create({
-//     title: title,
-//     body: body,
-//   });
-//   res.json({note: note})
-// });
-
-
 const port = process.env.PORT || 3001;
 
 app.listen(port, function() {
