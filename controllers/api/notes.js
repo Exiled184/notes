@@ -40,7 +40,7 @@ const fetchNotes = async (req,res) => {
         user:req.user._id
       }); res.status(200).json(note);
     } catch(error){
-      res.json({success: "Note Deleted"},{note})
+      res.json({success: "Note Deleted"})
     }
   }
 

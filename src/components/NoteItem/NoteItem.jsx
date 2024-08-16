@@ -1,24 +1,9 @@
 import { useEffect, useState } from "react";
 import * as noteAPI from "../../utilities/notes-api";
 
-export default function NoteItem() {
-    const [notes, setNotes] = useState([])
+export default function NoteItem({ notes }) {
 
 
-    useEffect(() => {
-        fetchNotes()
-    }, [])
-
-
-    const fetchNotes = async () => {
-        try {
-            const res = await noteAPI.fetchNotes()
-            console.log(res)
-            setNotes(res.notes)
-        } catch (error) {
-            console.log(error)
-        }
-    }
 
     return (
         <div>
@@ -31,7 +16,7 @@ export default function NoteItem() {
                         <li key={note._id}>
                             <p>{note.title}</p>
                             <p>{note.body}</p>
-                            <p>{new Date(note.createdAt).toLocaleString()}</p>
+                            {/* <p>{new Date(note.createdAt).toLocaleString()}</p> */}
                         </li>
                     ))}
                 </ul>

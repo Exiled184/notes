@@ -15,19 +15,25 @@ export default function NewNoteForm({ notes, setNotes }) {
         } catch (error) {
             console.log(error)
         }
-
     }
 
-    const handleSubmit = (e) => {
-        e.preventDefault();
-        if (noteText.trim()) {
-            console.log(noteText)
-            addNote(noteText);
-            setNoteText('')
+    const updateNote = async (updatedNote) => {
+        try {
+            const response = await noteAPI.updateNote(updatedNote._id, updatedNote)
+        } catch (error) {
+            console.log(error)
         }
     }
 
 
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        if (noteText.trim()) {
+            addNote(noteText);
+            setNoteText('')
+        }
+    }
 
     return (
         <form onSubmit={handleSubmit}>
