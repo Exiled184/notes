@@ -11,16 +11,25 @@ export default function NavBar({ user, setUser }) {
   }
 
   return (
-    <nav>
-      <span>Welcome, {user.name}</span>
-      &nbsp;&nbsp;
-      &nbsp; | &nbsp;
-      &nbsp;&nbsp;
-      <Link to="/notes">Home</Link>
-      &nbsp;&nbsp;
-      &nbsp; | &nbsp;
-      &nbsp;&nbsp;
-      <Link to="" onClick={handleLogOut}>Log Out</Link>
+    <nav className="bg-gray-800 p-4">
+      <div className="container mx-auto flex items-center justify-between">
+        <span className="text-white text-lg">Welcome, {user.name}</span>
+        <div className="space-x-4">
+          <Link
+            to="/notes"
+            className="text-white hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+          >
+            Home
+          </Link>
+          <Link
+            to=""
+            onClick={handleLogOut}
+            className="text-white hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
+          >
+            Log Out
+          </Link>
+        </div>
+      </div>
     </nav>
   );
 }

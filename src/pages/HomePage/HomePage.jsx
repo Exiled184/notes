@@ -56,32 +56,47 @@ export default function HomePage() {
             console.log(error)
         }
     }
-
     return (
-        <main className="App">
+        <main className="flex flex-col items-center min-h-screen bg-gray-100 p-4">
+            <h1 className="text-3xl font-bold mb-6">Note Taking App</h1>
 
-            <h1>Note Taking App</h1>
+            <div className="w-full max-w-md mb-6">
+                {!showCreateForm && !editingNote && (
+                    <button
+                        onClick={() => setShowCreateForm(true)}
+                        className="w-full py-2 px-4 rounded-md font-semibold text-white bg-indigo-600 hover:bg-indigo-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500"
+                    >
+                        Create New Note
+                    </button>
+                )}
+            </div>
 
-            {!showCreateForm && !editingNote && (
-                <button onClick={() => setShowCreateForm(true)}>Create New Note</button>
-            )}
             {showCreateForm && (
-                <CreateNoteForm onSubmit={handleCreateNote} onCancel={() => setShowCreateForm(false)} />
+                <div className="w-full max-w-md mb-6">
+                    <CreateNoteForm
+                        onSubmit={handleCreateNote}
+                        onCancel={() => setShowCreateForm(false)}
+                    />
+                </div>
             )}
-            {editingNote && (
-                <EditNoteForm
-                    note={editingNote}
-                    onSubmit={handleUpdateNote}
-                    onCancel={() => setEditingNote(null)}
-                />
-            )}
-            <NoteList
-                notes={notes}
-                onEdit={setEditingNote}
-                onDelete={handleDeleteNote}
-            />
 
-        </main >
+            {editingNote && (
+                <div className="w-full max-w-md mb-6">
+                    <EditNoteForm
+                        note={editingNote}
+                        onSubmit={handleUpdateNote}
+                        onCancel={() => setEditingNote(null)}
+                    />
+                </div>
+            )}
+
+            <div className="w-full max-w-4xl">
+                <NoteList
+                    notes={notes}
+                    onEdit={setEditingNote}
+                    onDelete={handleDeleteNote}
+                />
+            </div>
+        </main>
     );
 }
-

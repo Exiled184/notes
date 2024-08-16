@@ -2,6 +2,7 @@ import React from 'react';
 import * as noteAPI from '../../utilities/notes-api'
 
 const NoteList = ({ notes, onEdit, onDelete }) => {
+
     const handleDelete = async (noteId) => {
         try {
             await noteAPI.deleteNote(noteId);
@@ -13,7 +14,7 @@ const NoteList = ({ notes, onEdit, onDelete }) => {
 
 
     return (
-        <ul>
+        <ul >
             {notes.map(note => (
                 <li key={note._id}>
                     <h3>{note.title}</h3>

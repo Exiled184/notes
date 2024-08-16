@@ -7,7 +7,8 @@ export default function EditNoteForm({ notes, onSubmit, onCancel }) {
 
 
     useEffect(() => {
-        setTitle(notes.title);
+        setTitle(notes.title
+        );
         setContent(notes.content);
     }, [notes])
 
