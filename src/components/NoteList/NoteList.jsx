@@ -1,7 +1,17 @@
-// src/components/NoteList.js
 import React from 'react';
+import * as noteAPI from '../../utilities/notes-api'
 
 const NoteList = ({ notes, onEdit, onDelete }) => {
+    const handleDelete = async (noteId) => {
+        try {
+            await noteAPI.deleteNote(noteId);
+            onDelete(noteId);
+        } catch (error) {
+            console.error('Error deleting note:', error);
+        }
+    };
+
+
     return (
         <ul>
             {notes.map(note => (
@@ -15,5 +25,6 @@ const NoteList = ({ notes, onEdit, onDelete }) => {
         </ul>
     );
 };
+
 
 export default NoteList;

@@ -20,10 +20,6 @@ export default function NavBar({ user, setUser }) {
       &nbsp;&nbsp;
       &nbsp; | &nbsp;
       &nbsp;&nbsp;
-      <Link to="/notes/new">Create a Note</Link>
-      &nbsp;&nbsp;
-      &nbsp; | &nbsp;
-      &nbsp;&nbsp;
       <Link to="" onClick={handleLogOut}>Log Out</Link>
     </nav>
   );

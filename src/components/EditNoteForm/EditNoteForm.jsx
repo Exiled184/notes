@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import * as notesAPI from '../../utilities/notes-api'
+import * as noteAPI from '../../utilities/notes-api'
 
 export default function EditNoteForm({ notes, onSubmit, onCancel }) {
     const [title, setTitle] = useState(notes)
@@ -7,21 +7,24 @@ export default function EditNoteForm({ notes, onSubmit, onCancel }) {
 
 
     useEffect(() => {
-        setTitle(notes);
-        setContent(notes);
+        setTitle(notes.title);
+        setContent(notes.content);
     }, [notes])
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
+
         const updatedNote = { title, content }
         try {
-            await notesAPI.updateNote(notes._id, updatedNote);
+            await noteAPI.updateNote(notes._id, updatedNote);
             onSubmit(updatedNote)
         } catch (error) {
             console.log(error)
         }
     };
+
+
 
     return (
         <form onSubmit={handleSubmit}>
