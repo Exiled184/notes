@@ -56,6 +56,13 @@ export default function HomePage() {
     //         console.log(error)
     //     }
     // }
+
+    function handleNote(updatedNote) {
+        setNotes((notes) => notes.map((note) => note._id === updatedNote._id ? updatedNote : note)
+        )
+    }
+
+
     return (
         <main className="flex flex-col items-center min-h-screen bg-gray-100 p-4">
             <h1 className="text-3xl font-bold mb-6">Note Taking App</h1>
@@ -84,6 +91,7 @@ export default function HomePage() {
                 <div className="w-full max-w-md mb-6">
                     <EditNoteForm
                         note={editingNote}
+                        handleNote={handleNote}
                         // onSubmit={handleUpdateNote}
                         onCancel={() => setEditingNote(null)}
                     />
