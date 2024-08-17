@@ -1,17 +1,19 @@
 import React from 'react';
 import * as noteAPI from '../../utilities/notes-api'
 
-export default function NoteList({ notes, onEdit, onDelete }) {
+export default function NoteList({ notes, onEdit, onDelete, setNotes }) {
 
     const handleDelete = async (noteId) => {
         try {
             await noteAPI.deleteNote(noteId);
-            onDelete(noteId);
+            // onDelete(noteId);
+            const newNotes = notes.filter((note) => note._id !== noteId)
+            setNotes(newNotes)
         } catch (error) {
             console.error('Error deleting note:', error);
         }
     };
-
+    console.log(notes)
 
     return (
         <ul className="space-y-4">

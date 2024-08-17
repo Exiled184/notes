@@ -11,6 +11,7 @@ export function createNote(noteData) {
 }
 
 export function updateNote(noteID, noteData){
+  console.log(noteID)
     return sendRequest(`${BASE_URL}/${noteID}`,'PUT',noteData)
 }
 

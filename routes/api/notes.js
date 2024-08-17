@@ -10,9 +10,9 @@ router.get('/', ensureLoggedIn, notesController.fetchNotes)
 
 router.post('/', notesController.createNote)
 
-// router.put('/:id', notesController.updateNote)
+router.put('/:id', notesController.updateNote)
 
-// router.delete('/:id', notesController.deleteNote)
+router.delete('/:id', notesController.deleteNote)
 
 
 

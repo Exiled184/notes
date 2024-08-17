@@ -38,24 +38,24 @@ export default function HomePage() {
         }
     }
 
-    const handleUpdateNote = async (updatedNote) => {
-        try {
-            await noteAPI.updateNote(updatedNote._id, updatedNote);
-            setEditingNote(null)
-            fetchNotes()
-        } catch (error) {
-            console.log(error)
-        }
-    }
+    // const handleUpdateNote = async (updatedNote) => {
+    //     try {
+    //         await noteAPI.updateNote(updatedNote._id, updatedNote);
+    //         setEditingNote(null)
+    //         fetchNotes()
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
 
-    const handleDeleteNote = async (noteId) => {
-        try {
-            await noteAPI.deleteNote(noteId);
-            fetchNotes()
-        } catch (error) {
-            console.log(error)
-        }
-    }
+    // const handleDeleteNote = async (noteId) => {
+    //     try {
+    //         await noteAPI.deleteNote(noteId);
+    //         fetchNotes()
+    //     } catch (error) {
+    //         console.log(error)
+    //     }
+    // }
     return (
         <main className="flex flex-col items-center min-h-screen bg-gray-100 p-4">
             <h1 className="text-3xl font-bold mb-6">Note Taking App</h1>
@@ -84,7 +84,7 @@ export default function HomePage() {
                 <div className="w-full max-w-md mb-6">
                     <EditNoteForm
                         note={editingNote}
-                        onSubmit={handleUpdateNote}
+                        // onSubmit={handleUpdateNote}
                         onCancel={() => setEditingNote(null)}
                     />
                 </div>
@@ -93,8 +93,9 @@ export default function HomePage() {
             <div className="w-full max-w-4xl">
                 <NoteList
                     notes={notes}
+                    setNotes={setNotes}
                     onEdit={setEditingNote}
-                    onDelete={handleDeleteNote}
+                // onDelete={handleDeleteNote}
                 />
             </div>
         </main>

@@ -1,25 +1,29 @@
 import { useState, useEffect } from 'react';
 import * as noteAPI from '../../utilities/notes-api'
 
-export default function EditNoteForm({ notes, onSubmit, onCancel }) {
-    const [title, setTitle] = useState(notes)
-    const [content, setContent] = useState(notes);
-
-
+export default function EditNoteForm({ note, onSubmit, onCancel, setNotes }) {
+    const [title, setTitle] = useState(note.title);
+    const [content, setContent] = useState(note.content);
+    const [isEdit, setIsEdit] = useState(false);
     useEffect(() => {
-        setTitle(notes.title
+        setTitle(note.title
         );
-        setContent(notes.content);
-    }, [notes])
+        setContent(note.content);
+    }, [note])
 
 
     const handleSubmit = async (e) => {
         e.preventDefault();
 
+        setIsEdit(true)
         const updatedNote = { title, content }
         try {
-            await noteAPI.updateNote(notes._id, updatedNote);
-            onSubmit(updatedNote)
+            await noteAPI.updateNote(note._id, updatedNote);
+            // onSubmit(updatedNote)
+
+            const newNotes = [...notes]
+            // 
+            setNotes([...notes, newNotes])
         } catch (error) {
             console.log(error)
         }
@@ -42,3 +46,4 @@ export default function EditNoteForm({ notes, onSubmit, onCancel }) {
         </form>
     );
 };
+

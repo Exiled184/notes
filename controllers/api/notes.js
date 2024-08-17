@@ -20,7 +20,8 @@ const fetchNotes = async (req,res) => {
   
   const updateNote = async (req, res) => {
     try{
-      const note = await Note.findByIdAndUpdate({
+      console.log(req.params)
+      const note = await Note.findOneAndUpdate({
             _id: req.params.id,
             user: req.user._id
       },
