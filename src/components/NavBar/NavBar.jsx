@@ -16,7 +16,7 @@ export default function NavBar({ user, setUser }) {
         <span className="text-white text-lg">Welcome, {user.name}</span>
         <div className="space-x-4">
           <Link
-            to="/notes"
+            to="/"
             className="text-white hover:bg-gray-700 px-3 py-2 rounded-md text-sm font-medium"
           >
             Home
